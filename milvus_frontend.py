@@ -1,11 +1,5 @@
 import streamlit as st
 import pandas as pd
-# import weaviate
-# import weaviate.classes.config as wc
-# from weaviate.classes.config import Configure
-# import weaviate.classes as wvc
-# from weaviate.classes.config import Property, DataType
-# from weaviate.classes.config import Configure
 from PIL import Image
 import time
 import os
@@ -17,8 +11,11 @@ import os
 import asyncio
 from huggingface_hub import snapshot_download
 from pymilvus import MilvusClient, DataType
+import subprocess
 
 os.environ["STREAMLIT_WATCH_DIRS"] = ""
+
+subprocess.run(["docker", "compose", "up", "-d"], check=True)
 
 MODEL_NAME = 'WhereIsAI/UAE-Large-V1'
 path = snapshot_download(MODEL_NAME)
